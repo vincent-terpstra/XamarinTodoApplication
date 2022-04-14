@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TODO.Models;
 using System.Linq;
+using TODO.Objects;
 
 namespace TODO.Services
 {
@@ -12,44 +13,44 @@ namespace TODO.Services
     {
         private List<TaskModel> _items;
 
-        public Task<(bool success, string message)> SaveItemsAsync()
+        public Task<Result> SaveItemsAsync()
         {
-            return Task.FromResult((false, "Save not yet implemented"));
+            return Task.FromResult(new Result("Save not yet implemented"));
         }
 
-        public Task<(bool success, string message)> LoadItemsAsync()
+        public Task<Result> LoadItemsAsync()
         {
             _items = new List<TaskModel>{
                 new TaskModel{description = "Task A"},
                 new TaskModel{description = "Task B"},
                 new TaskModel{description = "Task C"}
             }; 
-            return Task.FromResult((true, "Items loaded to list"));
+            return Task.FromResult(new Result());
         }
         
-        public Task<List<TaskModel>> GetItemsAsync()
+        public Task<Result<List<TaskModel>>> GetAllItemsAsync()
         {
-            return Task.FromResult(_items);
+            return Task.FromResult(new Result<List<TaskModel>>(_items));
         }
 
-        public Task<bool> UpdateItemAsync(TaskModel model)
+        public Task<Result> UpdateItemAsync(TaskModel model)
         {
             _items.RemoveAll(i => i.guid == model.guid);
            _items.Add(model);
 
-           return Task.FromResult(true);
+           return Task.FromResult(new Result());
         }
 
-        public Task<bool> DeleteItemAsync(TaskModel model)
+        public Task<Result> DeleteItemAsync(string guid)
         {
-            _items.RemoveAll(i => i.guid == model.guid);
-            return Task.FromResult(true);
+            _items.RemoveAll(i => i.guid == guid);
+            return Task.FromResult(new Result());
         }
 
-        public Task<bool> CreateItemAsync(TaskModel model)
+        public Task<Result> CreateItemAsync(TaskModel model)
         {
             _items.Add(model);
-            return Task.FromResult(true);
+            return Task.FromResult(new Result());
         }
 
         /// <summary>
@@ -58,9 +59,9 @@ namespace TODO.Services
         /// </summary>
         /// <param name="guid"></param>
         /// <returns>TaskItem</returns>
-        public Task<TaskModel> LoadItemAsync(string guid)
+        public Task<Result<TaskModel>> GetItemAsync(string guid)
         {
-            return Task.FromResult(_items.FirstOrDefault(i => i.guid == guid));
+            return Task.FromResult(new Result<TaskModel>(_items.FirstOrDefault(i => i.guid == guid)));
         }
     }
 }

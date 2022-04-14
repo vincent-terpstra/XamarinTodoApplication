@@ -1,4 +1,5 @@
 ﻿using System;
+using TODO.Services;
 using TODO.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,12 +14,14 @@ namespace TODO
         {
             InitializeComponent();
 
-            MainPage = new AllTasksView();
+            
         }
 
         protected override void OnStart()
         {
             // Handle when your app starts
+            DependencyService.Register<TaskServiceList>();
+            MainPage = new AppShell();
         }
 
         protected override void OnSleep()
