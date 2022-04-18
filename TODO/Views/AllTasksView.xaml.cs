@@ -22,6 +22,12 @@ namespace TODO.Views
             TaskService = DependencyService.Get<IDataService<TaskModel>>();
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await _allTasksViewModel.OnAppearing();
+        }
+
         public IDataService<TaskModel> TaskService { get; }
     }
 }

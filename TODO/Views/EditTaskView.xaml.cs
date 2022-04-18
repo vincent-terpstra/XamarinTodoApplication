@@ -42,9 +42,9 @@ namespace TODO.Views
         {
             await TaskService.UpdateItemAsync(new TaskModel()
                 {
-                    guid = _guid,
-                    description = Description,
-                    createTime = CreateDate
+                    Guid = _guid,
+                    Description = Description,
+                    CreateTime = CreateDate
                 }
             );
             await Shell.Current.GoToAsync("..");
@@ -69,9 +69,9 @@ namespace TODO.Views
                 await Shell.Current.GoToAsync("..");
 
             TaskModel val = result.Value;
-            Description = val.description;
-            _guid = val.guid;
-            CreateDate = val.createTime;
+            Description = val.Description;
+            _guid = val.Guid;
+            CreateDate = val.CreateTime;
 
         }
     }

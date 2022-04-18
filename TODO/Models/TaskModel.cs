@@ -5,9 +5,9 @@ namespace TODO.Models
     public class TaskModel
     {
 
-        public string description { get; set; }
-        public string guid { get; set; } = Guid.NewGuid().ToString();
+        public string Description { get; set; }
+        public string Guid { get; set; } = System.Guid.NewGuid().ToString();
         
-        public DateTime createTime { get; set; } = DateTime.Now;
+        public DateTime CreateTime { get; set; } = DateTime.Now;
     }
 }

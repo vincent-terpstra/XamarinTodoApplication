@@ -7,7 +7,7 @@ using TODO.Objects;
 namespace TODO.Services
 {
     /// <summary>
-    /// Implements IDataService<TaskItem> using a default list of Task items;
+    /// Implements IDataService : TaskModel using a default list of Task items;
     /// </summary>
     public class TaskServiceList : IDataService<TaskModel>
     {
@@ -21,9 +21,9 @@ namespace TODO.Services
         public Task<Result> LoadItemsAsync()
         {
             _items = new List<TaskModel>{
-                new TaskModel{description = "Task A"},
-                new TaskModel{description = "Task B"},
-                new TaskModel{description = "Task C"}
+                new TaskModel{Description = "Task A"},
+                new TaskModel{Description = "Task B"},
+                new TaskModel{Description = "Task C"}
             }; 
             return Task.FromResult(new Result());
         }
@@ -35,7 +35,7 @@ namespace TODO.Services
 
         public Task<Result> UpdateItemAsync(TaskModel model)
         {
-            _items.RemoveAll(i => i.guid == model.guid);
+            _items.RemoveAll(i => i.Guid == model.Guid);
            _items.Add(model);
 
            return Task.FromResult(new Result());
@@ -43,7 +43,7 @@ namespace TODO.Services
 
         public Task<Result> DeleteItemAsync(string guid)
         {
-            _items.RemoveAll(i => i.guid == guid);
+            _items.RemoveAll(i => i.Guid == guid);
             return Task.FromResult(new Result());
         }
 
@@ -61,7 +61,7 @@ namespace TODO.Services
         /// <returns>TaskItem</returns>
         public Task<Result<TaskModel>> GetItemAsync(string guid)
         {
-            return Task.FromResult(new Result<TaskModel>(_items.FirstOrDefault(i => i.guid == guid)));
+            return Task.FromResult(new Result<TaskModel>(_items.FirstOrDefault(i => i.Guid == guid)));
         }
     }
 }

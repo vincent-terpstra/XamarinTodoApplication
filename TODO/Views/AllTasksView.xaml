@@ -3,20 +3,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODO.Views.AllTasksView"
+             xmlns:local="clr-namespace:TODO.ViewModels;assembly=TODO"
+             xmlns:model="clr-namespace:TODO.Models;assembly=TODO"
              Title="All Tasks">
-    <ContentPage.Content>
-        <StackLayout>
-            <CollectionView 
-                SelectionMode="Single"
-                ItemsSource="{Binding Items}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
-    </ContentPage.Content>
+ <!--
+    <StackLayout>
+        <CollectionView 
+            SelectionMode="Single"
+            x:DataType="local:AllTasksViewModel"
+            ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:TaskModel">
+                    <Label x:Name="Description" Text="{Binding  Description}"/>
+                    <Label x:Name="Guid" Text="{Binding  Guid}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+    -->
 </ContentPage>
