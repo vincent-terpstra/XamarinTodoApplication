@@ -1,4 +1,5 @@
 ﻿using System;
+using TODO.Models;
 using TODO.Services;
 using TODO.Views;
 using Xamarin.Forms;
@@ -17,10 +18,12 @@ namespace TODO
             
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             // Handle when your app starts
             DependencyService.Register<TaskServiceList>();
+            var taskService = DependencyService.Get<IDataService<TaskModel>>();
+            await taskService.LoadItemsAsync();
             MainPage = new AppShell();
         }
 

@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:TODO.ViewModels;assembly=TODO"
              xmlns:model="clr-namespace:TODO.Models;assembly=TODO"
              Title="All Tasks">
- <!--
-    <StackLayout>
+ 
         <CollectionView 
             SelectionMode="Single"
             x:DataType="local:AllTasksViewModel"
@@ -17,11 +16,12 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:TaskModel">
-                    <Label x:Name="Description" Text="{Binding  Description}"/>
-                    <Label x:Name="Guid" Text="{Binding  Guid}"/>
+                    <StackLayout>
+                        <Label x:Name="Description" Text="{Binding  Description}"/>
+                        <Label x:Name="Guid" Text="{Binding  Guid}"/>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
-    -->
+    
 </ContentPage>

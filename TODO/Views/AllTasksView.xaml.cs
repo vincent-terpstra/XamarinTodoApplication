@@ -14,7 +14,7 @@ namespace TODO.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllTasksView : ContentPage
     {
-        private AllTasksViewModel _allTasksViewModel;
+        private readonly AllTasksViewModel _allTasksViewModel;
         public AllTasksView()
         {
             InitializeComponent();

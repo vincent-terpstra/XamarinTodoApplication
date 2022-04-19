@@ -1,7 +1,9 @@
 ﻿namespace TODO.ViewModels
 {
-    public class EditTasksViewModel
+    public class EditTasksViewModel : BaseViewModel
     {
+        
+        
         
     }
 }

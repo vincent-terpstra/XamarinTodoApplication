@@ -6,9 +6,15 @@ using Xamarin.Forms;
 
 namespace TODO.ViewModels
 {
-    public class AllTasksViewModel
+    public class AllTasksViewModel : BaseViewModel
     {
-        public List<TaskModel> Items { get; set; }
+        private List<TaskModel> _items;
+
+        public List<TaskModel> Items
+        {
+            get=> _items; 
+            set=>SetPropertyValue(ref _items, value);
+        }
 
 
         public async Task OnAppearing()
