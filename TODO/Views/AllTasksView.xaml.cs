@@ -19,15 +19,26 @@ namespace TODO.Views
         {
             InitializeComponent();
             BindingContext = _allTasksViewModel = new AllTasksViewModel();
-            TaskService = DependencyService.Get<IDataService<TaskModel>>();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             await _allTasksViewModel.OnAppearing();
+            CollectionView.SelectedItem = null;
         }
 
-        public IDataService<TaskModel> TaskService { get; }
+        private async void AddItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(EditTaskView));
+        }
+
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CollectionView.SelectedItem == null) return;
+            var guid = ((TaskModel)CollectionView.SelectedItem).Guid;
+            await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.ItemGuid)}={guid}");
+
+        }
     }
 }

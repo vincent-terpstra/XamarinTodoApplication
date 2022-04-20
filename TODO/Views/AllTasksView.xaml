@@ -6,11 +6,15 @@
              xmlns:local="clr-namespace:TODO.ViewModels;assembly=TODO"
              xmlns:model="clr-namespace:TODO.Models;assembly=TODO"
              Title="All Tasks">
- 
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Add" Clicked="AddItem_Clicked"/>
+        </ContentPage.ToolbarItems>
         <CollectionView 
             SelectionMode="Single"
             x:DataType="local:AllTasksViewModel"
-            ItemsSource="{Binding Items}">
+            ItemsSource="{Binding Items}"
+            SelectionChanged="OnSelectionChanged"
+            x:Name="CollectionView">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
             </CollectionView.ItemsLayout>

@@ -4,9 +4,11 @@
        xmlns:views="clr-namespace:TODO.Views"
        x:Class="TODO.AppShell">
     <!-- Display a bottom tab bar containing two tabs -->   
-    <TabBar>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        
         <ShellContent Title="Notes"
                       Icon="icon_feed.png"
                       ContentTemplate="{DataTemplate views:AllTasksView}" />
-    </TabBar>
+        
+    </FlyoutItem>
 </Shell>

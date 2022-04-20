@@ -3,15 +3,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODO.Views.EditTaskView"
+             xmlns:model="clr-namespace:TODO.Models;assembly=TODO"
              Title="Edit Task">
     
-    <StackLayout>
+    <StackLayout x:DataType="model:TaskModel">
         <Editor x:Name="Editor" Placeholder="Enter Task"
-               HeightRequest="100"/>
+               HeightRequest="100" Text ="{Binding Description}"/>
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save" 
                     Clicked="OnSaveButtonClicked"/>
-            <Button Text="Delete" 
+            <Button Text="Delete" Grid.Column="1"
                     Clicked="OnDeleteButtonClicked" />
         </Grid>
     </StackLayout>

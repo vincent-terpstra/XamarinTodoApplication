@@ -22,41 +22,19 @@ namespace TODO.Views
         }
         
         private IDataService<TaskModel> TaskService { get; }
-        private string _description = string.Empty;
-        private string _guid = string.Empty;
-        private DateTime _createDate = DateTime.Now;
-        
-        public string Description { 
-            get => _description;
-            set => _description = value;
-        }
-
-        
-        public DateTime CreateDate { 
-            get=>_createDate;
-            set => _createDate = value;
-        }
 
 
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            await TaskService.UpdateItemAsync(new TaskModel()
-                {
-                    Guid = _guid,
-                    Description = Description,
-                    CreateTime = CreateDate
-                }
-            );
             await Shell.Current.GoToAsync("..");
         }
 
         private async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-            await TaskService.DeleteItemAsync(_guid);
             await Shell.Current.GoToAsync("..");
         }
 
-        private string ItemGuid
+        public string ItemGuid
         {
             set => LoadTask(value);
         }
@@ -68,11 +46,7 @@ namespace TODO.Views
             if (result.IsFailure)
                 await Shell.Current.GoToAsync("..");
 
-            TaskModel val = result.Value;
-            Description = val.Description;
-            _guid = val.Guid;
-            CreateDate = val.CreateTime;
-
+            BindingContext = result.Value;
         }
     }
 }
