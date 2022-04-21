@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TODO.Models;
 using TODO.Services;
+using TODO.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,39 +15,16 @@ namespace TODO.Views
     [QueryProperty(nameof(ItemGuid), nameof(ItemGuid))]
     public partial class EditTaskView : ContentPage
     {
+        private readonly EditTasksViewModel _editTasksViewModel;
         public EditTaskView()
         {
             InitializeComponent();
-            BindingContext = new TaskModel();
-            TaskService = DependencyService.Get<IDataService<TaskModel>>();
+            BindingContext = _editTasksViewModel = new EditTasksViewModel();
         }
         
-        private IDataService<TaskModel> TaskService { get; }
-
-
-        private async void OnSaveButtonClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-
-        private async void OnDeleteButtonClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-
         public string ItemGuid
         {
-            set => LoadTask(value);
-        }
-
-        private async void LoadTask(string guid)
-        {
-            var tasks = DependencyService.Get<IDataService<TaskModel>>();
-            var result = await tasks.GetItemAsync(guid);
-            if (result.IsFailure)
-                await Shell.Current.GoToAsync("..");
-
-            BindingContext = result.Value;
+            set => _editTasksViewModel.set(value);
         }
     }
 }

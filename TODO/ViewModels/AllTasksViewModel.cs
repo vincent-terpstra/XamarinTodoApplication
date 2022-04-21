@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TODO.Models;
 using TODO.Services;
@@ -8,22 +9,27 @@ namespace TODO.ViewModels
 {
     public class AllTasksViewModel : BaseViewModel
     {
-        private List<TaskModel> _items;
-
-        public List<TaskModel> Items
+        public AllTasksViewModel()
         {
-            get=> _items; 
-            set=>SetPropertyValue(ref _items, value);
+            Items = new();
         }
+
+        public ObservableCollection<TaskModel> Items { get;  }
+       
 
 
         public async Task OnAppearing()
         {
-            var taskService = DependencyService.Get<IDataService<TaskModel>>();
-            var result = await taskService.GetAllItemsAsync();
+            var result = await _taskDataService.GetAllItemsAsync();
 
             if (result.IsSuccess)
-                Items = result.Value;
+            {
+                Items.Clear();
+                foreach (var task in result.Value)
+                {
+                    Items.Add(task);
+                }
+            }
         }
     }
 }
