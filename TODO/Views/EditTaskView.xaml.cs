@@ -22,7 +22,7 @@ namespace TODO.Views
             BindingContext = _editTasksViewModel = new EditTasksViewModel();
         }
         
-        public string ItemGuid
+        public long ItemGuid
         {
             set => _editTasksViewModel.set(value);
         }

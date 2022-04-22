@@ -1,13 +1,13 @@
 ﻿using System;
+using SQLite;
 
 namespace TODO.Models
 {
     public class TaskModel
     {
-
+        [PrimaryKey, AutoIncrement]
+        public long ID { get; set; }
         public string Description { get; set; }
-        public string Guid { get; set; } = System.Guid.NewGuid().ToString();
-        
         public DateTime CreateTime { get; set; } = DateTime.Now;
     }
 }

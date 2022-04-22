@@ -22,14 +22,12 @@ namespace TODO.ViewModels
         {
             var result = await _taskDataService.GetAllItemsAsync();
 
-            if (result.IsSuccess)
+            Items.Clear();
+            foreach (var task in result)
             {
-                Items.Clear();
-                foreach (var task in result.Value)
-                {
-                    Items.Add(task);
-                }
+                Items.Add(task);
             }
+            
         }
     }
 }

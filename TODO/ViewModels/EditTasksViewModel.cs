@@ -18,7 +18,7 @@ namespace TODO.ViewModels
         {
             TaskModel save = new TaskModel()
             {
-                Guid = _guid == String.Empty ? Guid.NewGuid().ToString() : _guid,
+                ID =_id,
                 Description = Description,
                 CreateTime = CreateTime
             };
@@ -29,10 +29,11 @@ namespace TODO.ViewModels
 
         private async void CancelOrDeleteAction()
         {
-            if (_guid != String.Empty)
-            {
-                await _taskDataService.DeleteItemAsync(_guid);
-            }
+            if(_id != 0)
+                await _taskDataService.DeleteItemAsync(
+                    new TaskModel(){ ID = _id }
+                );
+            
             await Shell.Current.GoToAsync("..");
         }
 
@@ -44,27 +45,27 @@ namespace TODO.ViewModels
         }
 
         
-        public async void set(string guid)
+        public async void set(long id)
         {
             CancelOrDeleteText = "Delete";
-            
-            var result = await _taskDataService.GetItemAsync(guid);
-            if (result.IsFailure)
+            try
+            {
+                var result = await _taskDataService.GetItemAsync(id);    
+                var task = result;
+                Description = task.Description;
+                CreateTime = task.CreateTime;
+                _id = task.ID;
+            }
+            catch
             {
                 await Shell.Current.GoToAsync("..");
-                return;
             }
-
-            var task = result.Value;
-            Description = task.Description;
-            CreateTime = task.CreateTime;
-            _guid = task.Guid;
         }
         
         
     
         private string _description = string.Empty;
-        private string _guid = string.Empty;
+        private long _id = 0;
         
         public string Description { 
             get => _description;
