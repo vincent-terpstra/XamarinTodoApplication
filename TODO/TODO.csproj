@@ -17,4 +17,11 @@
     <ItemGroup>
       <Folder Include="Objects" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\AllProjectsView.xaml.cs">
+        <DependentUpon>AllProjectsView.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>

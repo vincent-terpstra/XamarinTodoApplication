@@ -7,6 +7,8 @@ namespace TODO.Models
     {
         [PrimaryKey, AutoIncrement]
         public long ID { get; set; }
+
+        public long ProjectID { get; set; }
         public string Description { get; set; }
         public DateTime CreateTime { get; set; } = DateTime.Now;
     }

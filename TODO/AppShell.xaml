@@ -5,8 +5,11 @@
        x:Class="TODO.AppShell">
     <!-- Display a bottom tab bar containing two tabs -->   
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="All Projects"
+                      Icon="icon_feed.png"
+                      ContentTemplate="{DataTemplate views:AllProjectsView}" />
         
-        <ShellContent Title="Notes"
+        <ShellContent Title="All Tasks"
                       Icon="icon_feed.png"
                       ContentTemplate="{DataTemplate views:AllTasksView}" />
         

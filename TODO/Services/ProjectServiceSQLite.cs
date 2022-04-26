@@ -8,21 +8,21 @@ using Xamarin.Forms;
 
 namespace TODO.Services;
 
-public class TaskServiceSQLite : IDataService<TaskModel>
+public class ProjectServiceSQLite : IDataService<ProjectModel>
 {
     private readonly SQLiteAsyncConnection _database;
     
-    public TaskServiceSQLite()
+    public ProjectServiceSQLite()
     {
         _database = DependencyService.Get<SQLiteAsyncConnection>();
     }
 
-    public Task<List<TaskModel>> GetAllItemsAsync()
+    public Task<List<ProjectModel>> GetAllItemsAsync()
     {
-        return _database.Table<TaskModel>().ToListAsync();
+        return _database.Table<ProjectModel>().ToListAsync();
     }
 
-    public Task<int> UpdateItemAsync(TaskModel item)
+    public Task<int> UpdateItemAsync(ProjectModel item)
     {
         if (item.ID != 0)
         {
@@ -34,14 +34,14 @@ public class TaskServiceSQLite : IDataService<TaskModel>
         }
     }
 
-    public Task<int> DeleteItemAsync(TaskModel item)
+    public Task<int> DeleteItemAsync(ProjectModel item)
     {
         return _database.DeleteAsync(item);
     }
 
-    public Task<TaskModel> GetItemAsync(long id)
+    public Task<ProjectModel> GetItemAsync(long id)
     {
-        return _database.Table<TaskModel>()
+        return _database.Table<ProjectModel>()
             .Where(i => i.ID == id)
             .FirstOrDefaultAsync();
     }

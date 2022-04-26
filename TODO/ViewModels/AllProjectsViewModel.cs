@@ -7,18 +7,18 @@ using Xamarin.Forms;
 
 namespace TODO.ViewModels
 {
-    public class AllTasksViewModel : BaseViewModel
+    public class AllProjectsViewModel : BaseViewModel
     {
-        public AllTasksViewModel()
+        public AllProjectsViewModel()
         {
             Items = new();
         }
 
-        public ObservableCollection<TaskModel> Items { get;  }
+        public ObservableCollection<ProjectModel> Items { get;  }
         
         public async Task OnAppearing()
         {
-            var result = await TaskDataService.GetAllItemsAsync();
+            var result = await ProjectDataService.GetAllItemsAsync();
 
             Items.Clear();
             foreach (var task in result)

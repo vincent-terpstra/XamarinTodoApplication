@@ -22,7 +22,7 @@ namespace TODO.ViewModels
                 Description = Description,
                 CreateTime = CreateTime
             };
-            await _taskDataService.UpdateItemAsync(save);
+            await TaskDataService.UpdateItemAsync(save);
             
             await Shell.Current.GoToAsync("..");
         }
@@ -30,7 +30,7 @@ namespace TODO.ViewModels
         private async void CancelOrDeleteAction()
         {
             if(_id != 0)
-                await _taskDataService.DeleteItemAsync(
+                await TaskDataService.DeleteItemAsync(
                     new TaskModel(){ ID = _id }
                 );
             
@@ -50,7 +50,7 @@ namespace TODO.ViewModels
             CancelOrDeleteText = "Delete";
             try
             {
-                var result = await _taskDataService.GetItemAsync(id);    
+                var result = await TaskDataService.GetItemAsync(id);    
                 var task = result;
                 Description = task.Description;
                 CreateTime = task.CreateTime;

@@ -9,10 +9,13 @@ namespace TODO.ViewModels;
 
 public class BaseViewModel : INotifyPropertyChanged
 {
-    protected IDataService<TaskModel> _taskDataService { get; }
+    protected IDataService<TaskModel> TaskDataService { get; }
+    protected IDataService<ProjectModel> ProjectDataService { get;  }
+
     protected BaseViewModel()
     {
-        _taskDataService = DependencyService.Get<IDataService<TaskModel>>();
+        TaskDataService = DependencyService.Get<IDataService<TaskModel>>();
+        ProjectDataService = DependencyService.Get<IDataService<ProjectModel>>();
     }
     
     public event PropertyChangedEventHandler PropertyChanged;
