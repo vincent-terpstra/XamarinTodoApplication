@@ -30,14 +30,14 @@ namespace TODO.Views
 
         private async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(EditTaskView));
+            await Shell.Current.GoToAsync(nameof(EditProjectView));
         }
 
         private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CollectionView.SelectedItem == null) return;
-            var id = ((TaskModel)CollectionView.SelectedItem).ID.ToString();
-            await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.ItemGuid)}={id}");
+            var id = ((ProjectModel)CollectionView.SelectedItem).ID.ToString();
+            await Shell.Current.GoToAsync($"{nameof(ProjectView)}?{nameof(ProjectView.ItemGuid)}={id}");
 
         }
     }

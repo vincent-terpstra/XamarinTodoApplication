@@ -24,7 +24,7 @@ namespace TODO.Views
         
         public long ItemGuid
         {
-            set => _editTasksViewModel.set(value);
+            set => _editTasksViewModel.Set(value);
         }
     }
 }

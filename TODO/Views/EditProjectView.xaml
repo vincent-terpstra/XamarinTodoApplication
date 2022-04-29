@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TODO.Views.EditProjectView"
+             xmlns:model="clr-namespace:TODO.ViewModels;assembly=TODO"
+             Title="Edit Project">
+    
+    <StackLayout x:DataType="model:EditProjectViewModel">
+        <Editor x:Name="Editor" Placeholder="Enter Project Description"
+                HeightRequest="100" Text ="{Binding Description}"/>
+        <Grid ColumnDefinitions="*,*">
+            <Button Text="Save" 
+                    Command="{Binding SaveCommand}"/>
+            <Button Text="{Binding CancelOrDeleteText}" Grid.Column="1"
+                    Command="{Binding CancelOrDeleteCommand}" />
+        </Grid>
+    </StackLayout>
+</ContentPage>

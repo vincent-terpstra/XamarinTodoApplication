@@ -19,7 +19,7 @@ namespace TODO.ViewModels
         public async Task OnAppearing()
         {
             var result = await ProjectDataService.GetAllItemsAsync();
-
+            
             Items.Clear();
             foreach (var task in result)
             {

@@ -2,16 +2,18 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:TODO.Views"
-       x:Class="TODO.AppShell">
+       x:Class="TODO.AppShell"
+       TabBarIsVisible="False">
     <!-- Display a bottom tab bar containing two tabs -->   
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="All Projects"
                       Icon="icon_feed.png"
-                      ContentTemplate="{DataTemplate views:AllProjectsView}" />
+                      ContentTemplate="{DataTemplate views:AllProjectsView}"
+                      Route="AllProjects"
+        />
         
         <ShellContent Title="All Tasks"
                       Icon="icon_feed.png"
                       ContentTemplate="{DataTemplate views:AllTasksView}" />
-        
     </FlyoutItem>
 </Shell>

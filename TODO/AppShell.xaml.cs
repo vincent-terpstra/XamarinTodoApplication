@@ -16,6 +16,7 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
         Routing.RegisterRoute(nameof(EditTaskView),typeof(EditTaskView));
-        ;
+        Routing.RegisterRoute(nameof(ProjectView),typeof(ProjectView));
+        Routing.RegisterRoute(nameof(EditProjectView),typeof(EditProjectView));
     }
 }

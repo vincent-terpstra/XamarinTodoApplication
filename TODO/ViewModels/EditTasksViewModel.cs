@@ -45,7 +45,7 @@ namespace TODO.ViewModels
         }
 
         
-        public async void set(long id)
+        public async void Set(long id)
         {
             CancelOrDeleteText = "Delete";
             try
