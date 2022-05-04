@@ -22,7 +22,7 @@
                 <DataTemplate x:DataType="model:TaskModel">
                     <StackLayout>
                         <Label x:Name="Description" Text="{Binding  Description}"/>
-                        <Label x:Name="ID" Text="{Binding  ID}"/>
+                        <Label x:Name="ID" Text="{Binding  Id}"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

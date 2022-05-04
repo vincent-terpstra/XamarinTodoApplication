@@ -12,7 +12,8 @@ using Xamarin.Forms.Xaml;
 namespace TODO.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [QueryProperty(nameof(ItemGuid), nameof(ItemGuid))]
+    [QueryProperty(nameof(TaskId), nameof(TaskId))]
+    [QueryProperty(nameof(ProjectId), nameof(ProjectId))]
     public partial class EditTaskView : ContentPage
     {
         private readonly EditTasksViewModel _editTasksViewModel;
@@ -22,9 +23,14 @@ namespace TODO.Views
             BindingContext = _editTasksViewModel = new EditTasksViewModel();
         }
         
-        public long ItemGuid
+        public long TaskId
         {
-            set => _editTasksViewModel.Set(value);
+            set => _editTasksViewModel.SetTaskId(value);
+        }
+
+        public long ProjectId
+        {
+            set => _editTasksViewModel.SetProjectId(value);
         }
     }
 }

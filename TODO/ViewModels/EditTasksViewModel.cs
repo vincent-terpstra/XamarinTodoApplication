@@ -18,9 +18,10 @@ namespace TODO.ViewModels
         {
             TaskModel save = new TaskModel()
             {
-                ID =_id,
+                Id =_id,
                 Description = Description,
-                CreateTime = CreateTime
+                CreateTime = CreateTime,
+                ProjectId = _projectId
             };
             await TaskDataService.UpdateItemAsync(save);
             
@@ -31,7 +32,7 @@ namespace TODO.ViewModels
         {
             if(_id != 0)
                 await TaskDataService.DeleteItemAsync(
-                    new TaskModel(){ ID = _id }
+                    new TaskModel(){ Id = _id }
                 );
             
             await Shell.Current.GoToAsync("..");
@@ -45,16 +46,17 @@ namespace TODO.ViewModels
         }
 
         
-        public async void Set(long id)
+        public async void SetTaskId(long id)
         {
             CancelOrDeleteText = "Delete";
             try
             {
-                var result = await TaskDataService.GetItemAsync(id);    
-                var task = result;
+                var task = await TaskDataService.GetItemAsync(id);    
                 Description = task.Description;
                 CreateTime = task.CreateTime;
-                _id = task.ID;
+                ProjectId = task.Id;
+                _id = task.Id;
+                
             }
             catch
             {
@@ -79,8 +81,19 @@ namespace TODO.ViewModels
             set => SetPropertyValue(ref _createTime, value);
         }
 
+        private long _projectId;
+        public long ProjectId
+        {
+            get => _projectId;
+            set => SetPropertyValue(ref _projectId, value);
+        }
+        
+        public void SetProjectId(long value)
+        {
+            ProjectId = value;
+        }
+        
         public Command CancelOrDeleteCommand { get; }
         public Command SaveCommand { get; }
-        
     }
 }

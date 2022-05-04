@@ -13,7 +13,7 @@ namespace TODO.Views;
 [QueryProperty(nameof(ItemGuid), nameof(ItemGuid))]
 public partial class ProjectView : ContentPage
 {
-    private ProjectViewModel _projectViewModel;
+    private readonly ProjectViewModel _projectViewModel;
     
     public ProjectView()
     {

@@ -4,14 +4,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODO.Views.ProjectView"
              xmlns:model="clr-namespace:TODO.ViewModels;assembly=TODO"
-             Title="View Project"
+             x:DataType="model:ProjectViewModel"
+             Title="{Binding Title}"
              >
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Clicked="EditItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout x:DataType="model:ProjectViewModel">
+        <StackLayout >
             <Label Text="{Binding Description}"></Label>
+            <Grid ColumnDefinitions="*,*">
+                <Button Text="Add Task" Command="{Binding OnAddTaskClicked}" Grid.Column="1"/>
+            </Grid>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

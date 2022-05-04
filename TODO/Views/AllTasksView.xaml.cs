@@ -36,8 +36,8 @@ namespace TODO.Views
         private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CollectionView.SelectedItem == null) return;
-            var id = ((TaskModel)CollectionView.SelectedItem).ID.ToString();
-            await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.ItemGuid)}={id}");
+            var id = ((TaskModel)CollectionView.SelectedItem).Id.ToString();
+            await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.TaskId)}={id}");
 
         }
     }

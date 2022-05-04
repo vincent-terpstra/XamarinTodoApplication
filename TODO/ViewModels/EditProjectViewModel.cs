@@ -28,7 +28,8 @@ public class EditProjectViewModel : BaseViewModel
          ProjectModel save = new ProjectModel()
         {
             ID =_id,
-            Description = Description
+            Description = Description,
+            Title  = _title
         };
         await ProjectDataService.UpdateItemAsync(save);
             
@@ -41,6 +42,14 @@ public class EditProjectViewModel : BaseViewModel
     {
         get => _description;
         set => SetPropertyValue(ref _description, value);
+    }
+
+    private string _title;
+
+    public string Title
+    {
+        get => _title;
+        set => SetPropertyValue(ref _title, value);
     }
 
     private long _id = 0;
@@ -62,6 +71,7 @@ public class EditProjectViewModel : BaseViewModel
             var result = await ProjectDataService.GetItemAsync(id);
             Description = result.Description;
             _id = result.ID;
+            Title = result.Title;
         }
         catch
         {

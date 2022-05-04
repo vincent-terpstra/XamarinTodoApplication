@@ -24,7 +24,7 @@ public class TaskServiceSQLite : IDataService<TaskModel>
 
     public Task<int> UpdateItemAsync(TaskModel item)
     {
-        if (item.ID != 0)
+        if (item.Id != 0)
         {
             return _database.UpdateAsync(item);
         }
@@ -42,7 +42,7 @@ public class TaskServiceSQLite : IDataService<TaskModel>
     public Task<TaskModel> GetItemAsync(long id)
     {
         return _database.Table<TaskModel>()
-            .Where(i => i.ID == id)
+            .Where(i => i.Id == id)
             .FirstOrDefaultAsync();
     }
 }

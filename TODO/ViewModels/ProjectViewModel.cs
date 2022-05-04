@@ -1,10 +1,21 @@
 ﻿using TODO.Services;
+using TODO.Views;
 using Xamarin.Forms;
 
 namespace TODO.ViewModels;
 
 public class ProjectViewModel : BaseViewModel
 {
+    public ProjectViewModel()
+    {
+        OnAddTaskClicked = new Command(OnAddTaskAction);
+    }
+
+    private async void OnAddTaskAction()
+    {
+        await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.ProjectId)}={ID}");
+    }
+
     private string _cancelText = "Cancel";
     public string CancelOrDeleteText
     {
@@ -19,7 +30,16 @@ public class ProjectViewModel : BaseViewModel
         set => SetPropertyValue(ref _description, value);
     }
     
-    public long ID { get; set; }
+    public long ID { get; private set; }
+
+    public Command OnAddTaskClicked { get; }
+
+    private string _title;
+    public string Title
+    {
+        get => _title;
+        set => SetPropertyValue(ref _title, value);
+    }
 
     public async void Set(long id)
     {
@@ -29,6 +49,7 @@ public class ProjectViewModel : BaseViewModel
             var result = await ProjectDataService.GetItemAsync(id);
             Description = result.Description;
             ID = result.ID;
+            Title = result.Title;
         }
         catch
         {

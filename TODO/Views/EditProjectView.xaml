@@ -7,8 +7,10 @@
              Title="Edit Project">
     
     <StackLayout x:DataType="model:EditProjectViewModel">
-        <Editor x:Name="Editor" Placeholder="Enter Project Description"
-                HeightRequest="100" Text ="{Binding Description}"/>
+        <Editor  Placeholder="Enter Project Title"
+                 HeightRequest="100" Text ="{Binding Title}"/>
+        <Editor  Placeholder="Enter Project Description"
+                 HeightRequest="100" Text ="{Binding Description}"/>
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save" 
                     Command="{Binding SaveCommand}"/>

@@ -9,6 +9,7 @@
     <StackLayout x:DataType="model:EditTasksViewModel">
         <Editor x:Name="Editor" Placeholder="Enter Task"
                HeightRequest="100" Text ="{Binding Description}"/>
+        <Label Text="{Binding ProjectId}"/>
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save" 
                     Command="{Binding SaveCommand}"/>
