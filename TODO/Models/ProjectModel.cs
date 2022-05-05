@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using System;
+using SQLite;
 
 namespace TODO.Models;
 
@@ -9,4 +10,7 @@ public class ProjectModel
     
     public string Title { get; set; }
     public string Description { get; set; }
+    
+    public DateTime CreateDate { get; set; }
+    
 }

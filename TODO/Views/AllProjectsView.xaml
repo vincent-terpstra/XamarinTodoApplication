@@ -22,8 +22,7 @@
                 <DataTemplate x:DataType="model:ProjectModel">
                     <StackLayout>
                         <Label x:Name="Title" Text="{Binding  Title}" FontSize="Title"/>
-                        <Label x:Name="Description" Text="{Binding  Description}" FontSize="Subtitle"/>
-                        <Label x:Name="Id" Text="{Binding  ID}"/>
+                        <Label x:Name="Description" Text="{Binding  CreateDate}" FontSize="Subtitle"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

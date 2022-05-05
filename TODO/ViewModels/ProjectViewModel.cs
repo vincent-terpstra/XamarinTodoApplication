@@ -1,4 +1,9 @@
-﻿using TODO.Services;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using TODO.Models;
+using TODO.Services;
 using TODO.Views;
 using Xamarin.Forms;
 
@@ -9,8 +14,10 @@ public class ProjectViewModel : BaseViewModel
     public ProjectViewModel()
     {
         OnAddTaskClicked = new Command(OnAddTaskAction);
+        Items = new ObservableCollection<TaskModel>();
     }
 
+    public ObservableCollection<TaskModel> Items { get;  }
     private async void OnAddTaskAction()
     {
         await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.ProjectId)}={ID}");
@@ -41,6 +48,7 @@ public class ProjectViewModel : BaseViewModel
         set => SetPropertyValue(ref _title, value);
     }
 
+
     public async void Set(long id)
     {
         CancelOrDeleteText = "Delete";
@@ -50,6 +58,15 @@ public class ProjectViewModel : BaseViewModel
             Description = result.Description;
             ID = result.ID;
             Title = result.Title;
+
+            Expression<Func<TaskModel, bool>> filter = task => task.ProjectId == result.ID;
+            var relatedTasks = await TaskDataService.GetFilteredItemsAsync(filter);
+
+            Items.Clear();
+            foreach (var task in relatedTasks)
+            {
+                Items.Add(task);
+            }
         }
         catch
         {

@@ -25,7 +25,6 @@ namespace TODO.ViewModels
             {
                 Items.Add(task);
             }
-            
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using SQLite;
 using TODO.Models;
@@ -20,6 +21,11 @@ public class TaskServiceSQLite : IDataService<TaskModel>
     public Task<List<TaskModel>> GetAllItemsAsync()
     {
         return _database.Table<TaskModel>().ToListAsync();
+    }
+
+    public Task<List<TaskModel>> GetFilteredItemsAsync(Expression<Func<TaskModel, bool>> filter)
+    {
+        return _database.Table<TaskModel>().Where(filter).ToListAsync();
     }
 
     public Task<int> UpdateItemAsync(TaskModel item)

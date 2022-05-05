@@ -1,4 +1,5 @@
-﻿using SQLitePCL;
+﻿using System;
+using SQLitePCL;
 using TODO.Models;
 using Xamarin.Forms;
 
@@ -29,13 +30,21 @@ public class EditProjectViewModel : BaseViewModel
         {
             ID =_id,
             Description = Description,
-            Title  = _title
+            Title  = _title,
+            CreateDate = CreateDate
         };
         await ProjectDataService.UpdateItemAsync(save);
             
         await Shell.Current.GoToAsync("..");
     }
 
+    
+    
+    private DateTime CreateDate
+    {
+        get => _createDate;
+        set => SetPropertyValue(ref _createDate, value);
+    }
 
     private string _description;
     public string Description
@@ -57,6 +66,8 @@ public class EditProjectViewModel : BaseViewModel
     public Command CancelOrDeleteCommand { get; }
     
     private string _cancelText = "Cancel";
+    private DateTime _createDate = DateTime.Now;
+
     public string CancelOrDeleteText
     {
         get => _cancelText;
@@ -72,6 +83,7 @@ public class EditProjectViewModel : BaseViewModel
             Description = result.Description;
             _id = result.ID;
             Title = result.Title;
+            CreateDate = _createDate;
         }
         catch
         {

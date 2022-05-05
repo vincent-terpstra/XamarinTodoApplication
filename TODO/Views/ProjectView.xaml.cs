@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TODO.Models;
 using TODO.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -30,5 +31,12 @@ public partial class ProjectView : ContentPage
     {
         var id= _projectViewModel.ID;
         await Shell.Current.GoToAsync($"{nameof(EditProjectView)}?{nameof(EditProjectView.ItemGuid)}={id}");
+    }
+
+    private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (CollectionView.SelectedItem == null) return;
+        var id = ((TaskModel)CollectionView.SelectedItem).Id.ToString();
+        await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.TaskId)}={id}");
     }
 }
