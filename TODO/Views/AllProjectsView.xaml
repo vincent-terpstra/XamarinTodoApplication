@@ -5,8 +5,12 @@
              x:Class="TODO.Views.AllProjectsView"
              xmlns:local="clr-namespace:TODO.ViewModels;assembly=TODO"
              xmlns:model="clr-namespace:TODO.Models;assembly=TODO"
+             xmlns:converters="clr-namespace:TODO.Objects;assembly=TODO"
              Title="All Projects">
-        <ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <converters:DateTimeToString x:Key="DateTimeToString" />
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
             <ToolbarItem Text="Add" Clicked="AddItem_Clicked"/>
         </ContentPage.ToolbarItems>
         <CollectionView 
@@ -22,10 +26,9 @@
                 <DataTemplate x:DataType="model:ProjectModel">
                     <StackLayout>
                         <Label x:Name="Title" Text="{Binding  Title}" FontSize="Title"/>
-                        <Label x:Name="Description" Text="{Binding  CreateDate}" FontSize="Subtitle"/>
+                        <Label x:Name="Description" Text="{Binding  Path=CreateDate, Converter={StaticResource DateTimeToString}}" FontSize="Subtitle" Margin="20,0,0,0"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    
 </ContentPage>
