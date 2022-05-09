@@ -11,6 +11,8 @@ namespace TODO.Models
         public long ProjectId { get; set; }
         public string Description { get; set; }
         public DateTime CreateTime { get; set; } = DateTime.Now;
-        
+
+        public bool IsCompleted { get; set; } = false;
+
     }
 }

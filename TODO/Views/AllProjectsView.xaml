@@ -26,7 +26,8 @@
                 <DataTemplate x:DataType="model:ProjectModel">
                     <StackLayout>
                         <Label x:Name="Title" Text="{Binding  Title}" FontSize="Title"/>
-                        <Label x:Name="Description" Text="{Binding  Path=CreateDate, Converter={StaticResource DateTimeToString}}" FontSize="Subtitle" Margin="20,0,0,0"/>
+                        <Label x:Name="Description" Text="{Binding  Path=CreateDate, StringFormat='{0:MMM dd, yyyy}'}" FontSize="Subtitle" Margin="20,0,0,0"/>
+                        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="DarkGray"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

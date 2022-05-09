@@ -21,7 +21,12 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:TaskModel">
                     <StackLayout>
-                        <Label x:Name="Description" Text="{Binding  Description}"/>
+                        
+                        <Grid ColumnDefinitions="40,*">
+                            <CheckBox IsChecked="{Binding IsCompleted}" Grid.Column="0" CheckedChanged="OnCompleteChecked" BindingContext="{Binding .}"/>
+                            <Label x:Name="Description" Text="{Binding  Description}"  Grid.Column="1"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="DarkGray"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

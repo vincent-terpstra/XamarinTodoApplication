@@ -40,5 +40,16 @@ namespace TODO.Views
             await Shell.Current.GoToAsync($"{nameof(EditTaskView)}?{nameof(EditTaskView.TaskId)}={id}");
 
         }
+
+        private void OnCompleteChecked(object sender, CheckedChangedEventArgs e)
+        {
+            var checkbox = (CheckBox)sender;
+
+            if (checkbox.BindingContext is TaskModel ob)
+            {
+                ob.IsCompleted = checkbox.IsChecked;
+                DependencyService.Get<IDataService<TaskModel>>().UpdateItemAsync(ob);
+            }
+        }
     }
 }

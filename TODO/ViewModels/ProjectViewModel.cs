@@ -15,6 +15,7 @@ public class ProjectViewModel : BaseViewModel
     {
         OnAddTaskClicked = new Command(OnAddTaskAction);
         Items = new ObservableCollection<TaskModel>();
+        
     }
 
     public ObservableCollection<TaskModel> Items { get;  }
@@ -72,5 +73,10 @@ public class ProjectViewModel : BaseViewModel
         {
             await Shell.Current.GoToAsync("..");
         }
+    }
+    
+    public async Task CompleteTask()
+    {
+        
     }
 }
