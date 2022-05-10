@@ -54,8 +54,8 @@ namespace TODO.ViewModels
                 var task = await TaskDataService.GetItemAsync(id);    
                 Description = task.Description;
                 CreateTime = task.CreateTime;
-                _projectId = task.Id;
-                _id = task.ProjectId;
+                _projectId = task.ProjectId;
+                _id = task.Id;
                 
             }
             catch
