@@ -15,5 +15,9 @@
         <ShellContent Title="All Tasks"
                       Icon="icon_feed.png"
                       ContentTemplate="{DataTemplate views:AllTasksView}" />
+        
     </FlyoutItem>
+    <MenuItem Text="Switch Theme"
+              Clicked="OnSwitchTheme"/>
+    
 </Shell>

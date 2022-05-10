@@ -4,7 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODO.Views.EditTaskView"
              xmlns:model="clr-namespace:TODO.ViewModels;assembly=TODO"
-             Title="Edit Task">
+             Title="Edit Task"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
     
     <StackLayout x:DataType="model:EditTasksViewModel">
         <Editor x:Name="Editor" Placeholder="Enter Task"

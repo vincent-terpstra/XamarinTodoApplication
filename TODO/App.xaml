@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODO.App">
     <Application.Resources>
-
+            <ResourceDictionary Source="Themes/LightTheme.xaml" />
+            <Style 
+                   TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource SecondaryTextColor}" />
+            </Style>
     </Application.Resources>
 </Application>

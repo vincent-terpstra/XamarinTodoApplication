@@ -19,5 +19,9 @@
         <DependentUpon>AllProjectsView.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Themes\LightTheme.xaml.cs">
+        <DependentUpon>LightTheme.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

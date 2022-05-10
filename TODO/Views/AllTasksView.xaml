@@ -5,7 +5,8 @@
              x:Class="TODO.Views.AllTasksView"
              xmlns:local="clr-namespace:TODO.ViewModels;assembly=TODO"
              xmlns:model="clr-namespace:TODO.Models;assembly=TODO"
-             Title="All Tasks">
+             Title="All Tasks"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
         <ContentPage.ToolbarItems>
             <ToolbarItem Text="Add" Clicked="AddItem_Clicked"/>
         </ContentPage.ToolbarItems>

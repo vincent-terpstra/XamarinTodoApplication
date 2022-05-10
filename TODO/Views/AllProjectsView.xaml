@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:TODO.ViewModels;assembly=TODO"
              xmlns:model="clr-namespace:TODO.Models;assembly=TODO"
              xmlns:converters="clr-namespace:TODO.Objects;assembly=TODO"
-             Title="All Projects">
+             Title="All Projects"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
     <ContentPage.Resources>
         <converters:DateTimeToString x:Key="DateTimeToString" />
     </ContentPage.Resources>
