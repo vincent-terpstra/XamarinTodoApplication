@@ -54,8 +54,8 @@ namespace TODO.ViewModels
                 var task = await TaskDataService.GetItemAsync(id);    
                 Description = task.Description;
                 CreateTime = task.CreateTime;
-                ProjectId = task.Id;
-                _id = task.Id;
+                _projectId = task.Id;
+                _id = task.ProjectId;
                 
             }
             catch
@@ -82,15 +82,10 @@ namespace TODO.ViewModels
         }
 
         private long _projectId;
-        public long ProjectId
-        {
-            get => _projectId;
-            set => SetPropertyValue(ref _projectId, value);
-        }
         
         public void SetProjectId(long value)
         {
-            ProjectId = value;
+            _projectId = value;
         }
         
         public Command CancelOrDeleteCommand { get; }

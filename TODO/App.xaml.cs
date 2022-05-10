@@ -19,7 +19,7 @@ namespace TODO
 
         protected override void OnStart()
         {
-            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SQLDatabase.db3");
+            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TODOProjectDB.db3");
         
             var database = new SQLiteAsyncConnection(path);
             database.CreateTableAsync<ProjectModel>().Wait();
